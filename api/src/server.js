@@ -223,9 +223,8 @@ const start = async () => {
         console.error("Database synchronization error:", error);
       });
 
-    await app.listen(port, host, () =>{
-      console.log(`App Lsitening on port ${port}`)
-    });
+    await app.listen({ port, host });
+    console.log(`App listening on http://${host}:${port}`);
   } catch (err) {
     console.log(err);
     process.exit(1);
