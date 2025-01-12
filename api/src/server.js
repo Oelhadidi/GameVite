@@ -17,7 +17,7 @@ dotenv.config();
 // Initialize Fastify
 let blacklistedTokens = [];
 const app = fastify();
-const port = parseInt(process.env.DB_PORT) || 3000;
+const port =  3000;
 // Set up plugins
 await app
   .register(fastifyBcrypt, { saltWorkFactor: 12 })
