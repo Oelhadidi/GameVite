@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Dashboard from './pages/Dashboard';
-import Game from './pages/Game';
 import Puissance from './pages/Puissance';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
