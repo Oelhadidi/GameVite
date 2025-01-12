@@ -18,6 +18,8 @@ dotenv.config();
 let blacklistedTokens = [];
 const app = fastify();
 const port =  3000;
+const host = "0.0.0.0";
+
 // Set up plugins
 await app
   .register(fastifyBcrypt, { saltWorkFactor: 12 })
@@ -221,7 +223,7 @@ const start = async () => {
         console.error("Database synchronization error:", error);
       });
 
-    await app.listen(port, () =>{
+    await app.listen(port, host, () =>{
       console.log(`App Lsitening on port ${port}`)
     });
   } catch (err) {
