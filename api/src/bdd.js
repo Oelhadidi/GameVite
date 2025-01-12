@@ -16,9 +16,9 @@ const DB_PORT = parseInt(process.env.DB_PORT);
  * Connexion à la base de données PostgreSQL
  */
 export const sequelize = new Sequelize({
-  dialect: PostgresDialect,
+  dialect: 'postgres',
   database: DB_NAME,
-  username: DB_USER,
+  user: DB_USER,
   password: DB_PASSWORD,
   host: DB_HOST,
   port: DB_PORT,
