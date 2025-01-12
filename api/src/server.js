@@ -10,11 +10,14 @@ import { gamesRoutes } from "./routes/games.js";
 import { matchRecordRoutes } from "./routes/matchRecord.js";
 import { sequelize } from "./bdd.js";
 import socketioServer from "fastify-socket.io";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 // Initialize Fastify
 let blacklistedTokens = [];
 const app = fastify();
-
+const port = parseInt(process.env.DB_PORT) || 3000;
 // Set up plugins
 await app
   .register(fastifyBcrypt, { saltWorkFactor: 12 })
@@ -218,9 +221,9 @@ const start = async () => {
         console.error("Database synchronization error:", error);
       });
 
-    await app.listen({ port: 3000 });
-    console.log("Fastify server started on " + chalk.blue("http://localhost:3000"));
-    console.log(chalk.bgYellow("Access documentation at http://localhost:3000/documentation"));
+    await app.listen(port, () =>{
+      console.log(`App Lsitening on port ${port}`)
+    });
   } catch (err) {
     console.log(err);
     process.exit(1);
