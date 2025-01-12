@@ -50,7 +50,7 @@ const Header = ({ toggleDarkMode, darkMode }) => {
         {/* Desktop nav */}
         <nav className="hidden lg:flex space-x-6">
           <NavLink to="/" className="text-white hover:text-gray-300 transition-colors duration-300">Dashboard</NavLink>
-          <NavLink to="/puissance" className="text-white hover:text-gray-300 transition-colors duration-300">Puissance</NavLink>
+          <NavLink to="/puissance" className="text-white hover:text-gray-300 transition-colors duration-300">Connect 4</NavLink>
           {user ? (
             <div className="flex items-center cursor-pointer" onClick={toggleOverlay}>
               <svg className="w-6 h-6 rounded-full mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -67,7 +67,7 @@ const Header = ({ toggleDarkMode, darkMode }) => {
         {isOpen && (
           <nav className={`lg:hidden absolute top-16 left-0 right-0 ${darkMode ? 'bg-gray-900' : 'bg-gradient-to-r from-purple-500 to-indigo-600'} flex flex-col items-center space-y-4 p-4`}>
             <NavLink to="/" className="text-white hover:text-gray-300 transition-colors duration-300" onClick={toggleMenu}>Dashboard</NavLink>
-            <NavLink to="/puissance" className="text-white hover:text-gray-300 transition-colors duration-300 " onClick={toggleMenu}>Puissance</NavLink>
+            <NavLink to="/puissance" className="text-white hover:text-gray-300 transition-colors duration-300 " onClick={toggleMenu}>Connect 4</NavLink>
             {user ? (
             <div className="flex items-center cursor-pointer" onClick={toggleOverlay}>
               <svg className="w-6 h-6 rounded-full mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

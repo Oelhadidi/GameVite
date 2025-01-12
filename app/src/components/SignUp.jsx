@@ -7,9 +7,9 @@ const SignUp = ({ darkMode }) => {
   const navigate = useNavigate();
 
   return (
-    <div className={`flex items-center justify-center mt-7 ${darkMode ? ' text-white' : ' text-white'}`}>
+    <div className={`flex items-center justify-center mt-7 ${darkMode ? ' text-white' : ' text-gray-500'}`}>
       <div className={`w-full max-w-md p-8 space-y-6 ${darkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg shadow-lg mx-4 md:mx-0`}>
-        <h2 className={`text-3xl font-extrabold text-center ${darkMode ? 'text-white' : 'text-white'}`}>Sign Up</h2>
+        <h2 className={`text-3xl font-extrabold text-center ${darkMode ? 'text-white' : 'text-gray-500'}`}>Sign Up</h2>
         <Formik
           initialValues={{ 
             firstName: '', 
@@ -39,10 +39,19 @@ const SignUp = ({ darkMode }) => {
                 password: values.password
               });
 
-              console.log('Sign Up Successful:', response.data);
-              setSubmitting(false);
-              navigate('/'); // Redirige vers la page de dashboard après inscription réussie
+              // Check the response for success or error
+              if (response.data.error) {
+                alert(`Error: ${response.data.error}`);
+                setErrors({ email: response.data.error });
+              } else if (response.data.success) {
+                alert(`Success: ${response.data.message}`);
+                setSubmitting(false);
+                navigate('/'); // Redirect on success
+              } else {
+                alert('An unexpected response was received. Please try again.');
+              }
             } catch (error) {
+              alert(error.response.data);
               console.error('Error during Sign Up:', error.response.data);
               setErrors({ email: 'Email already used or other error' });
               setSubmitting(false);

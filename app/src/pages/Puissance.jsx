@@ -19,9 +19,7 @@ const Puissance = () => {
   const [scores, setScores] = useState({ player1Wins: 0, player2Wins: 0 });
   const [isBoardActive, setIsBoardActive] = useState(true);
 
-
   if (!user || !token) {
-    alert("Please log in to start the game");
     window.location.href = '/signin';
   }
   // Socket listeners and setup
