@@ -286,7 +286,7 @@ const Puissance = ({ darkMode }) => {
           <h1 className='text-white'>Enter Room Code</h1>
           <input
             type="text"
-            className={`m-4 p-4 rounded-md h-11 ${darkMode ? ' text-black' : 'text-white'}`}
+            className={`m-4 p-4 rounded-md h-11 ${darkMode ? ' text-black' : 'text-black'}`}
             value={roomCode}
             onChange={(e) => setRoomCode(e.target.value)}
           />
