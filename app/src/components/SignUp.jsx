@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 // Initialisation des variables d'environnement
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = 'https://gamevite.onrender.com';
 
 const SignUp = ({ darkMode }) => {
   const navigate = useNavigate();

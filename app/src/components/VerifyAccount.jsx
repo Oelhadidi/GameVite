@@ -4,7 +4,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 // Initialisation des variables d'environnement
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = 'https://gamevite.onrender.com';
 
 const VerifyAccount = () => {
   const navigate = useNavigate();

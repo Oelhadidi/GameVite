@@ -5,7 +5,7 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 
 // Initialisation des variables d'environnement
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = 'https://gamevite.onrender.com';
 
 const SignIn = ({ darkMode }) => {
   const navigate = useNavigate();
