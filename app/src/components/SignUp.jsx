@@ -3,6 +3,9 @@ import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+// Initialisation des variables d'environnement
+const API_URL = import.meta.env.VITE_API_URL;
+
 const SignUp = ({ darkMode }) => {
   const navigate = useNavigate();
 
@@ -31,7 +34,7 @@ const SignUp = ({ darkMode }) => {
           })}
           onSubmit={async (values, { setSubmitting, setErrors }) => {
             try {
-              const response = await axios.post('http://localhost:3000/register', {
+              const response = await axios.post(`${API_URL}/register`, {
                 firstname: values.firstName,
                 lastname: values.lastName,
                 email: values.email,

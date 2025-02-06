@@ -3,6 +3,9 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+// Initialisation des variables d'environnement
+const API_URL = import.meta.env.VITE_API_URL;
+
 const VerifyAccount = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -11,7 +14,7 @@ const VerifyAccount = () => {
     const verifyToken = async () => {
       const token = new URLSearchParams(location.search).get('token'); // Récupère le token depuis l'URL
       try {
-        const response = await axios.get(`http://localhost:3000/verify?token=${token}`);
+        const response = await axios.get(`${API_URL}/verify?token=${token}`);
         if (response.data.success) {
             navigate('/signin', { state: { message: 'Votre compte a été vérifié avec succès!' } });
         }

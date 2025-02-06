@@ -2,8 +2,11 @@
 import { useState, useEffect, useCallback } from 'react';
 import io from 'socket.io-client';
 
+// Initialisation des variables d'environnement
+const API_URL = import.meta.env.VITE_API_URL;
+
 // Initialize socket connection
-const socket = io('http://localhost:3000', { autoConnect: false });
+const socket = io(API_URL, { autoConnect: false });
 const Puissance = () => {
   const [board, setBoard] = useState(Array(6).fill(null).map(() => Array(7).fill(null))); // Game board
   const [currentPlayer, setCurrentPlayer] = useState(1); // Current player
@@ -28,7 +31,7 @@ const Puissance = () => {
     // Fetch match scores once players are set
     const fetchScores = async (player1Id, player2Id) => {
       try {
-        const response = await fetch(`http://localhost:3000/match/record?player1Id=${player1Id}&player2Id=${player2Id}`, {
+        const response = await fetch(`${API_URL}/match/record?player1Id=${player1Id}&player2Id=${player2Id}`, {
           headers: {
             'Authorization': `Bearer ${token}`,  // Include your token for authentication if needed
           },
@@ -231,7 +234,7 @@ const Puissance = () => {
         const loserId = user.id === players.firstPlayerId ? players.secondPlayerId : players.firstPlayerId;
   
         // Update the match record with the winner and loser
-        fetch('http://localhost:3000/match/update', {
+        fetch(`${API_URL}/match/update`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

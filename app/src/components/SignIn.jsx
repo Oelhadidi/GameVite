@@ -4,6 +4,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import React, { useEffect } from 'react';
 
+// Initialisation des variables d'environnement
+const API_URL = import.meta.env.VITE_API_URL;
+
 const SignIn = ({ darkMode }) => {
   const navigate = useNavigate();
 
@@ -35,7 +38,7 @@ const SignIn = ({ darkMode }) => {
           })}
           onSubmit={async (values, { setSubmitting, setErrors }) => {
             try {
-              const response = await axios.post('http://localhost:3000/login', {
+              const response = await axios.post(`${API_URL}/login`, {
                 email: values.email,
                 password: values.password,
               });
