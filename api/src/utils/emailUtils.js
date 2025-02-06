@@ -6,7 +6,7 @@ export async function sendVerificationEmail(email, token) {
     console.log("Préparation de l'envoi de l'e-mail de vérification à:", email);
     console.log("Préparation de l'envoi de l'e-mail de :", process.env.EMAIL_USER);
     console.log("Préparation de l'envoi avec le mdp:", process.env.EMAIL_PASSWORD);
-    const verificationUrl = `https://game-vite2-i1mtv0vnx-omar-elhadidis-projects.vercel.app/verify?token=${token}`;
+    const verificationUrl = `https://gamevite.onrender.com/verify?token=${token}`;
 
     // Utiliser le template depuis emailTemplates.js
     const mjmlTemplate = verificationEmailTemplate(verificationUrl);

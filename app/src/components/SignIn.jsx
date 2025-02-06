@@ -2,19 +2,29 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState  } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 // Initialisation des variables d'environnement
 const API_URL = 'https://gamevite.onrender.com';
 
+
 const SignIn = ({ darkMode }) => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     if (location.state && location.state.message) {
       alert(location.state.message);
     }
-  }, [location]);
+    const status = searchParams.get("message");
+    if (status === "success") {
+      setMessage("Votre compte a été vérifié avec succès !");
+    } else if (status === "error") {
+      setMessage("Lien de vérification invalide ou expiré.");
+    }
+  }, [searchParams], [location]);
 
   return (
     <div className={`flex items-center justify-center min-h-screen ${darkMode ? 'text-white' : 'text-gray-500'}`}>

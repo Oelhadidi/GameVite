@@ -78,9 +78,9 @@ export function usersRoutes(app) {
 			const email = decoded.email;
 
 			await updateUserVerification(email);
-			return res.status(200).send({ success: true, message: "Votre compte a été vérifié avec succès!" });
+			return res.redirect(`https://game-vite2.vercel.app/signin?message=success`);
 		} catch (error) {
-			return res.status(400).send({ success: false, message: 'Lien de vérification invalide ou expiré.' });
+			return res.redirect(`https://game-vite2.vercel.app/signin?message=error`);
 		}
 	});
 
