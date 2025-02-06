@@ -7,7 +7,7 @@ const API_URL = 'https://gamevite.onrender.com';
 
 // Initialize socket connection
 const socket = io(API_URL, { autoConnect: false });
-const Puissance = () => {
+const Puissance = ({ darkMode }) => {
   const [board, setBoard] = useState(Array(6).fill(null).map(() => Array(7).fill(null))); // Game board
   const [currentPlayer, setCurrentPlayer] = useState(1); // Current player
   const [winner, setWinner] = useState(null); // Game winner
@@ -286,7 +286,7 @@ const Puissance = () => {
           <h1 className='text-white'>Enter Room Code</h1>
           <input
             type="text"
-            className='m-4 p-4 rounded-md h-11'
+            className={`m-4 p-4 rounded-md h-11 ${darkMode ? ' text-black' : 'text-white'}`}
             value={roomCode}
             onChange={(e) => setRoomCode(e.target.value)}
           />
