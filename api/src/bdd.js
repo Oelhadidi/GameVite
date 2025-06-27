@@ -1,6 +1,6 @@
 import { Sequelize } from "@sequelize/core";
-import { PostgresDialect } from "@sequelize/postgres"; // Changer MySQL pour PostgreSQL
-import pg from "pg";
+import { MySqlDialect } from "@sequelize/mysql"; // MySQL pour WAMP Server
+import mysql2 from "mysql2";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -13,10 +13,10 @@ const DB_HOST = process.env.DB_HOST;
 const DB_PORT = parseInt(process.env.DB_PORT);
 
 /**
- * Connexion à la base de données PostgreSQL
+ * Connexion à la base de données MySQL
  */
 export const sequelize = new Sequelize({
-  dialect: 'postgres',
+  dialect: 'mysql',
   database: DB_NAME,
   user: DB_USER,
   password: DB_PASSWORD,
@@ -26,5 +26,5 @@ export const sequelize = new Sequelize({
 
 // Test de connexion
 sequelize.authenticate()
-  .then(() => console.log("Connecté à PostgreSQL avec Sequelize."))
-  .catch((err) => console.error("Erreur de connexion PostgreSQL :", err));
+  .then(() => console.log("Connecté à MySQL avec Sequelize."))
+  .catch((err) => console.error("Erreur de connexion MySQL :", err));

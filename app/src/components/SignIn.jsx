@@ -6,7 +6,8 @@ import React, { useEffect, useState  } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 // Initialisation des variables d'environnement
-const API_URL = 'https://gamevite.onrender.com';
+const API_URL = import.meta.env.VITE_API_URL;
+console.log('API_URL in SignIn:', API_URL); // Debug log
 
 
 const SignIn = ({ darkMode }) => {
@@ -48,10 +49,13 @@ const SignIn = ({ darkMode }) => {
           })}
           onSubmit={async (values, { setSubmitting, setErrors }) => {
             try {
+              console.log('Attempting login with:', values); // Debug log
+              console.log('API URL:', API_URL); // Debug log
               const response = await axios.post(`${API_URL}/login`, {
                 email: values.email,
                 password: values.password,
               });
+              console.log('Login response:', response); // Debug log
 
               localStorage.setItem('token', response.data.token);
               localStorage.setItem('user', JSON.stringify(response.data.user));
@@ -59,6 +63,7 @@ const SignIn = ({ darkMode }) => {
               setSubmitting(false);
               navigate('/');
             } catch (error) {
+              console.error('Login error:', error); // Debug log
               setErrors({ email: 'Invalid email or password' });
               setSubmitting(false);
             }
